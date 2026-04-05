@@ -46,4 +46,4 @@ Sentry org: `cerid-ai`, project: `cerid-ai-marketing`.
 
 ## Repository
 
-This site will become its own repository at `Cerid-AI/cerid-ai-marketing`. It was originally part of the `cerid-ai` monorepo at `packages/marketing/`.
+This site was extracted from the `cerid-ai` monorepo (`packages/marketing/`) into its own repository at `Cerid-AI/cerid-ai-marketing`.

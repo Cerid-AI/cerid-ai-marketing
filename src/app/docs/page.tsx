@@ -51,7 +51,7 @@ const DOC_SECTIONS = [
     title: "Development",
     icon: Cpu,
     docs: [
-      { name: "Contributing", desc: "Development setup, testing, and contribution guidelines", href: `${GITHUB}/CLAUDE.md` },
+      { name: "Contributing", desc: "Development setup, testing, and contribution guidelines", href: `${GITHUB}/CONTRIBUTING.md` },
       { name: "Future Roadmap", desc: "Planned features — External APIs, Watched Folders, RAG Resilience", href: `${GITHUB}/tasks/todo.md` },
     ],
   },
