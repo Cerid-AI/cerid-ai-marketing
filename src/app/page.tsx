@@ -5,96 +5,32 @@ import {
   Search,
   ShieldCheck,
   Sparkles,
-  Bot,
-  Layers,
   ArrowRight,
   FolderOpen,
   Eye,
   CheckCircle,
   Cpu,
   Zap,
-  BookOpen,
-  Briefcase,
-  Code2,
-  Terminal,
+  HardDrive,
+  KeyRound,
+  Github,
 } from "lucide-react"
 import { BrandShield } from "@/components/brand-shield"
 import { ExpandableCard } from "@/components/expandable-card"
-
-/* ── Features with expandable detail ── */
-const FEATURES = [
-  {
-    iconName: "ShieldCheck",
-    title: "Verified Answers",
-    summary: "Every response is fact-checked in real time. Inline badges show what's confirmed, uncertain, or needs review — no other tool does this.",
-    detail: "Streaming claim verification with inline source attribution. 4-type claim detection (factual, recency, evasion, citation). Click any footnote to see source, confidence, and reasoning. Expert mode uses frontier models for re-verification.",
-    link: { href: "/features#verification", label: "See verification flow" },
-    image: "/badge-verification.jpg",
-  },
-  {
-    iconName: "Layers",
-    title: "Smart Retrieval",
-    summary: "Ask anything — Cerid searches all your files and finds the best answer, adapting its strategy to each document type.",
-    detail: "Three RAG modes (Manual, Smart, Custom Smart) with per-chunk retrieval profiles. Hybrid BM25 + vector search. Cross-encoder reranking. Adaptive pipeline adjusts search depth based on question complexity.",
-    link: { href: "/features#retrieval", label: "See pipeline details" },
-    image: "/badge-rag.jpg",
-  },
-  {
-    iconName: "Bot",
-    title: "Any AI Model",
-    summary: "Claude, GPT, Gemini, Llama — or run a free local model with Ollama. Zero lock-in, zero mandatory API costs.",
-    detail: "Smart capability-based routing across OpenRouter providers. Guided Ollama install wizard. 6 of 8 pipeline tasks run locally at $0. Proactive model switching on ignorance detection.",
-    link: { href: "/features#models", label: "See model routing" },
-    image: "/badge-byom.jpg",
-  },
-  {
-    iconName: "Brain",
-    title: "Learns From You",
-    summary: "Cerid remembers your preferences, decisions, and key facts. Each conversation makes the system smarter.",
-    detail: "6-type memory salience scoring: empirical facts, decisions, preferences, project context, temporal events, conversational insights. Memory recall auto-injects alongside KB context.",
-    image: "/badge-agents.jpg",
-  },
-  {
-    iconName: "Lock",
-    title: "Totally Private",
-    summary: "Your data never leaves your computer. No cloud. Telemetry is opt-in and off by default. Only the query context you choose goes to the LLM.",
-    detail: "Self-hosted Docker stack with ChromaDB, Neo4j, Redis — all on your machine. Optional Fernet encryption at rest. Open source Apache-2.0.",
-    image: "/badge-secure.jpg",
-  },
-  {
-    iconName: "FolderOpen",
-    title: "Easy Import",
-    summary: "Point at a folder — Cerid scans, previews, and indexes everything. PDFs, docs, code, notes, even zip archives.",
-    detail: "Bulk folder scan with estimation preview. Archive extraction (zip/tar). Automatic junk filtering. SSE progress streaming with pause/resume controls. 30+ file types supported.",
-    image: "/badge-architecture.jpg",
-  },
-]
-
-/* ── Personas ── */
-const PERSONAS = [
-  {
-    icon: BookOpen,
-    title: "Researchers",
-    highlight: "Search across thousands of papers and get verified answers in seconds.",
-    bullets: ["Cross-reference findings across studies", "Fact-check AI claims against your sources", "Build a persistent knowledge graph"],
-  },
-  {
-    icon: Briefcase,
-    title: "Analysts",
-    highlight: "Connect reports, financial data, and memos into one searchable brain.",
-    bullets: ["Adaptive scoring for structured documents", "Tax returns, spreadsheets, and PDFs understood deeply", "Memory layer tracks decisions and project context"],
-  },
-  {
-    icon: Code2,
-    title: "Developers",
-    highlight: "Self-host with Docker. Extend with MCP tools. Full API access.",
-    bullets: ["21 core MCP tools, 10 AI agents, 32 API routers", "Plugin system with BSL-1.1 commercial tier", "Ollama local LLM for $0 pipeline costs"],
-  },
-]
+import { FEATURES, PERSONAS } from "@/lib/content"
 
 export default function Home() {
   return (
     <>
+      {/* ══════════════ PROBLEM STATEMENT ══════════════ */}
+      <section className="py-12 text-center">
+        <div className="mx-auto max-w-3xl px-6">
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            Your knowledge is scattered across hundreds of files. Cloud AI won&apos;t read them privately. And it never shows you where the answer came from.
+          </p>
+        </div>
+      </section>
+
       {/* ══════════════ HERO ══════════════ */}
       <section className="relative overflow-hidden py-20 md:py-36 bg-circuit">
         <div className="pointer-events-none absolute inset-0 bg-hero-glow" />
@@ -114,8 +50,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl">
-                Turn your files, notes, and documents into a searchable AI assistant
-                that verifies its own answers. Everything stays on your machine.
+                Ask questions about your documents. See exactly where every answer comes from. Nothing ever leaves your machine.
               </p>
 
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:justify-start">
@@ -156,7 +91,7 @@ export default function Home() {
               {[
                 { value: "100%", label: "Private" },
                 { value: "30+", label: "File Types" },
-                { value: "Quick", label: "Setup" },
+                { value: "5-min", label: "Setup" },
                 { value: "Free", label: "Open Source" },
               ].map((s) => (
                 <div key={s.label} className="min-w-[70px]">
@@ -169,7 +104,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════ HOW IT WORKS (moved up) ══════════════ */}
+      {/* ══════════════ HOW IT WORKS ══════════════ */}
       <section className="py-20 border-t divider-gold">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
@@ -182,8 +117,8 @@ export default function Home() {
             {[
               { n: "1", icon: FolderOpen, title: "Import your files", desc: "Drop a folder or upload files. Cerid parses PDFs, docs, code, emails, and archives automatically." },
               { n: "2", icon: Search, title: "Ask anything", desc: "Natural language queries search all your knowledge. Adaptive retrieval matches the right strategy." },
-              { n: "3", icon: Eye, title: "See the evidence", desc: "Inline verification badges on every claim. Click any footnote to see the source and reasoning." },
-              { n: "4", icon: Brain, title: "Cerid learns", desc: "Facts, decisions, and preferences are remembered. Each conversation makes the system smarter." },
+              { n: "3", icon: Eye, title: "See which documents answered your question", desc: "Inline verification badges on every claim. Click any footnote to see the source and reasoning." },
+              { n: "4", icon: Brain, title: "Gets smarter over time", desc: "Facts, decisions, and preferences are remembered. Each conversation makes the system smarter." },
             ].map((s) => (
               <div key={s.n} className="flex flex-col bg-card p-7">
                 <div className="flex items-center gap-3">
@@ -192,6 +127,37 @@ export default function Home() {
                 </div>
                 <h3 className="mt-5 text-base font-semibold">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════ WHO IT'S FOR (personas) ══════════════ */}
+      <section className="py-20 bg-circuit">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <div className="gold-line mx-auto w-16 mb-6" />
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Built for you</h2>
+            <p className="mt-4 text-muted-foreground">Whatever your field, Cerid adapts to how you work.</p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {PERSONAS.map((p) => (
+              <div key={p.title} className="rounded-xl border border-border bg-card p-7 transition-all hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand mb-4">
+                  <p.icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg font-semibold">{p.title}</h3>
+                <p className="mt-2 text-sm font-medium text-brand">{p.highlight}</p>
+                <ul className="mt-4 space-y-2">
+                  {p.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-brand/60" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -258,33 +224,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════ WHO IT'S FOR (personas) ══════════════ */}
-      <section className="py-20 bg-circuit">
+      {/* ══════════════ SECURITY HIGHLIGHTS ══════════════ */}
+      <section className="py-16 border-t border-border">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="text-center">
-            <div className="gold-line mx-auto w-16 mb-6" />
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Built for you</h2>
-            <p className="mt-4 text-muted-foreground">Whatever your field, Cerid adapts to how you work.</p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {PERSONAS.map((p) => (
-              <div key={p.title} className="rounded-xl border border-border bg-card p-7 transition-all hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand mb-4">
-                  <p.icon className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm font-medium text-brand">{p.highlight}</p>
-                <ul className="mt-4 space-y-2">
-                  {p.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-xs text-muted-foreground">
-                      <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-brand/60" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="rounded-xl border border-border bg-card p-6 text-center">
+              <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand mb-4">
+                <HardDrive className="h-5 w-5" />
               </div>
-            ))}
+              <h3 className="text-base font-semibold">Stored locally</h3>
+              <p className="mt-2 text-sm text-muted-foreground">Your documents, embeddings, and metadata stay on your machine.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6 text-center">
+              <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand mb-4">
+                <KeyRound className="h-5 w-5" />
+              </div>
+              <h3 className="text-base font-semibold">Encrypted at rest</h3>
+              <p className="mt-2 text-sm text-muted-foreground">API keys and credentials protected with Fernet encryption.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6 text-center">
+              <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand mb-4">
+                <Github className="h-5 w-5" />
+              </div>
+              <h3 className="text-base font-semibold">Open source</h3>
+              <p className="mt-2 text-sm text-muted-foreground">Apache-2.0 licensed. Audit every line of code.</p>
+            </div>
+          </div>
+          <div className="mt-6 text-center">
+            <Link href="/security" className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:text-brand/80 transition-colors">
+              Full security details <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -297,6 +266,19 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
             Clone the repo, run the setup script, and your private AI companion is ready.
           </p>
+
+          {/* Friendly CTA */}
+          <div className="mt-8">
+            <Link
+              href="https://github.com/Cerid-AI/cerid-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center gap-2 rounded-lg bg-brand px-7 text-sm font-semibold text-brand-foreground shadow-lg shadow-brand/20 transition-all hover:bg-brand/90 hover:shadow-brand/30"
+            >
+              Get Started Free
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
 
           {/* Terminal command */}
           <div className="mx-auto mt-8 max-w-lg overflow-hidden rounded-lg border border-border bg-card">
