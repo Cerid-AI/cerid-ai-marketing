@@ -17,26 +17,25 @@ const DOC_SECTIONS = [
     icon: BookOpen,
     docs: [
       { name: "README", desc: "Quick start, architecture overview, and setup instructions", href: `${GITHUB}/README.md` },
-      { name: "Setup Guide", desc: "Detailed installation with Docker Compose", href: `${GITHUB}/scripts/README.md` },
-      { name: "Environment Variables", desc: "All configurable env vars and their defaults", href: `${GITHUB}/docs/ENV_REFERENCE.md` },
+      { name: "Setup Guide", desc: "Step-by-step installation with Docker Compose", href: `${GITHUB}/README.md#quick-start` },
+      { name: "Configuration", desc: "All configurable env vars, secrets management, and defaults", href: `${GITHUB}/README.md#configuration` },
     ],
   },
   {
     title: "API Reference",
     icon: Code2,
     docs: [
-      { name: "REST API Reference", desc: "All 178 endpoints across 33 routers with request/response shapes", href: `${GITHUB}/docs/API_REFERENCE.md` },
-      { name: "MCP Tools", desc: "21 core MCP tools for knowledge base, memory, and verification", href: `${GITHUB}/docs/API_REFERENCE.md#mcp-tools` },
-      { name: "SDK Endpoints", desc: "Stable versioned API for external consumers", href: `${GITHUB}/docs/API_REFERENCE.md#sdk-api` },
+      { name: "REST API Reference", desc: "All endpoints — query, ingest, agents, sync, chat, and authentication", href: `${GITHUB}/README.md#rest-api` },
+      { name: "MCP Tools", desc: "18 tools for knowledge base, memory, and verification via MCP protocol", href: `${GITHUB}/README.md#rest-api` },
+      { name: "SDK Reference", desc: "Stable versioned API for external consumers at /sdk/v1/", href: `${GITHUB}/README.md#rest-api` },
     ],
   },
   {
     title: "Architecture",
     icon: Layers,
     docs: [
-      { name: "Completed Phases", desc: "Full development history from Phase 1 through Phase 51", href: `${GITHUB}/docs/COMPLETED_PHASES.md` },
-      { name: "Tier Matrix", desc: "Feature availability across Core, Pro, and Vault tiers", href: `${GITHUB}/docs/TIER_MATRIX.md` },
-      { name: "Changelog", desc: "Version history with added features, changes, and fixes", href: `${GITHUB}/CHANGELOG.md` },
+      { name: "Changelog", desc: "Version history with features, improvements, and fixes", href: `${GITHUB}/CHANGELOG.md` },
+      { name: "Tier Comparison", desc: "Feature availability across Core, Pro, and Enterprise tiers", href: "/pricing" },
     ],
   },
   {
@@ -52,7 +51,6 @@ const DOC_SECTIONS = [
     icon: Cpu,
     docs: [
       { name: "Contributing", desc: "Development setup, testing, and contribution guidelines", href: `${GITHUB}/CONTRIBUTING.md` },
-      { name: "Future Roadmap", desc: "Planned features — External APIs, Watched Folders, RAG Resilience", href: `${GITHUB}/tasks/todo.md` },
     ],
   },
 ]
