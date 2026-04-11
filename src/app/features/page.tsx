@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 import { ArrowRight } from "lucide-react"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BrandShield } from "@/components/brand-shield"
 import { AgentCarousel } from "@/components/agent-carousel"
 import { CATEGORIES } from "@/lib/content"
 
