@@ -2,19 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Bot, ChevronLeft, ChevronRight, Sparkles } from "lucide-react"
-
-const AGENTS = [
-  { name: "Query", desc: "Orchestrates multi-domain KB search with hybrid retrieval, reranking, and context assembly.", color: "text-brand" },
-  { name: "Decomposer", desc: "Breaks complex questions into parallel sub-queries for comprehensive coverage.", color: "text-brand" },
-  { name: "Assembler", desc: "Intelligently assembles context from diverse sources with facet coverage and token budgeting.", color: "text-brand" },
-  { name: "Triage", desc: "Routes incoming files through the ingestion pipeline — parse, classify, chunk, store.", color: "text-brand" },
-  { name: "Curator", desc: "Audits knowledge quality, recommends improvements, and scores every artifact.", color: "text-brand" },
-  { name: "Rectify", desc: "Detects duplicates, stale content, orphaned chunks, and auto-fixes integrity issues.", color: "text-brand" },
-  { name: "Audit", desc: "Tracks costs, latency, query patterns, and generates usage analytics reports.", color: "text-gold" },
-  { name: "Maintenance", desc: "Runs scheduled health checks, cleanup, and index optimization in the background.", color: "text-gold" },
-  { name: "Memory", desc: "Extracts facts, decisions, and preferences from conversations with conflict resolution.", color: "text-brand" },
-  { name: "Verification", desc: "Validates every AI claim against KB, external sources, and cross-model verification.", color: "text-brand" },
-]
+import { AGENTS } from "@/lib/content"
 
 export function AgentCarousel() {
   const [current, setCurrent] = useState(0)
@@ -34,7 +22,7 @@ export function AgentCarousel() {
     <div className="w-full max-w-3xl mx-auto">
       <div className="text-center mb-8">
         <div className="gold-line mx-auto w-16 mb-4" />
-        <h2 className="text-3xl font-bold tracking-tight">10 AI Agents</h2>
+        <h2 className="text-3xl font-bold tracking-tight">9 AI Agents</h2>
         <p className="mt-2 text-muted-foreground">Specialized intelligence for every task.</p>
       </div>
 

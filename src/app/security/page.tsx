@@ -60,7 +60,7 @@ const SECURITY_FEATURES = [
     iconName: "ShieldCheck",
     title: "CI/CD Security",
     description: "Secret detection. Dependency audit. Type checking.",
-    detail: "The 9-job CI pipeline includes: detect-secrets scanning all tracked files, bandit static analysis for Python security issues, pip-audit for dependency vulnerabilities (including transitive), Trivy container image scanning for CRITICAL/HIGH CVEs, ruff linting with inline tier-check enforcement, and mypy type checking. All jobs must pass before the Docker image is built.",
+    detail: "The 8-job CI pipeline includes: detect-secrets scanning all tracked files, bandit static analysis for Python security issues, pip-audit for dependency vulnerabilities (including transitive), Trivy container image scanning for CRITICAL/HIGH CVEs, ruff linting with inline tier-check enforcement, and mypy type checking. All jobs must pass before the Docker image is built.",
   },
 ]
 
