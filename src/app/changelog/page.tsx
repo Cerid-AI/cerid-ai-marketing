@@ -8,6 +8,20 @@ export const metadata: Metadata = {
 
 const PHASES = [
   {
+    phase: "v0.83.0",
+    date: "Apr 2026",
+    title: "Verification Hardening + Memory Efficacy",
+    highlights: [
+      "Expert verification mode with frontier model re-verification for high-stakes claims",
+      "Source-aware external query construction across 7 data sources with per-source relevance tuning",
+      "CRAG retrieval quality gate — supplements with external sources when KB results are poor",
+      "Verified-fact-to-memory promotion — high-confidence claims auto-promote to empirical memories",
+      "15-bug structural fix sprint — embedding singleton, healthcheck rewrite, verification wiring",
+      "Major dependency upgrades: langgraph 1.1, neo4j 6.1, TypeScript 6.0, Vite 8",
+    ],
+    tag: "Verification",
+  },
+  {
     phase: 51,
     date: "Mar 2026",
     title: "Memory Salience Improvements",
