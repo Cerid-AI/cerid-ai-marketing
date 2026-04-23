@@ -96,8 +96,9 @@ export default function FeaturesPage() {
               <div className="gold-line w-16 mb-4 mx-auto md:mx-0" />
               <h2 className="text-2xl font-bold">See it in action</h2>
               <p className="mt-3 text-muted-foreground">
-                Clone the repo and have Cerid running in under five minutes.
-                9 agents, 21 core tools, 33 API routers — all yours.
+                Clone the repo and run one command. 9 specialist agents +
+                custom-agents builder, 21 core tools + any external MCP server,
+                33 API routers — all yours.
               </p>
               <Link
                 href="https://github.com/Cerid-AI/cerid-ai"
