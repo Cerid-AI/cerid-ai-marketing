@@ -27,6 +27,18 @@ const SECURITY_FEATURES = [
     detail: "When CERID_MULTI_USER is enabled, the system uses JWT-based authentication with bcrypt password hashing (cost factor 12). Access tokens are short-lived (15 minutes) with separate refresh tokens (7 days) that support revocation. Per-user API key management enables programmatic access with usage metering.",
   },
   {
+    iconName: "Shield",
+    title: "Strict-Agents Mode",
+    description: "Single env var disables every user-defined agent endpoint with 403 — fleet-wide kill switch.",
+    detail: "STRICT_AGENTS_ONLY=true wires a FastAPI router-level dependency that returns 403 on every /custom-agents endpoint before the request body executes — no Neo4j hit, no agent load, no runtime exposure. The flag is read at request time so operators can flip it without restarting the process. Every denial is logged at WARNING for incident-response audit. The 10 built-in specialist agents remain available. Designed for regulated deployments where end-user agent customization isn't acceptable.",
+  },
+  {
+    iconName: "ShieldCheck",
+    title: "Governed MCP Client",
+    description: "Three-mode policy controls which external MCP servers Cerid will consume, with per-call audit.",
+    detail: "MCP_CLIENT_MODE supports three modes: permissive (every configured server callable, default), allowlist (only servers in MCP_CLIENT_ALLOWLIST), and disabled (every external MCP call denied — kill switch). Every call emits a structured INFO log with tool, server, status (ok/fail/denied), and elapsed time, plus a Sentry breadcrumb. Denials happen before the wire — the policy fires at the FastAPI dependency layer. Both env vars are read per call so operators can flip without restart. The governance layer is the differentiator vs other platforms whose MCP clients have no allowlist or audit.",
+  },
+  {
     iconName: "Eye",
     title: "Rate Limiting",
     description: "Sliding-window rate limiting with per-client isolation.",

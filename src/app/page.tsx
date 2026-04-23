@@ -91,8 +91,8 @@ export default function Home() {
               {[
                 { value: "100%", label: "Private" },
                 { value: "30+", label: "File Types" },
-                { value: "5-min", label: "Setup" },
-                { value: "Free", label: "Open Source" },
+                { value: "1-cmd", label: "Setup" },
+                { value: "Apache-2.0", label: "Open Source" },
               ].map((s) => (
                 <div key={s.label} className="min-w-[70px]">
                   <p className="text-2xl font-bold text-brand text-glow-brand">{s.value}</p>
@@ -171,8 +171,8 @@ export default function Home() {
             <div className="gold-line mx-auto w-16 mb-6" />
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Everything you need</h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Tap any card to learn more. Powerful enough for enterprise intelligence.
-              Simple enough to set up in five minutes.
+              Tap any card to learn more. Powerful enough for regulated-deployment
+              intelligence. Simple enough to clone, run, and use.
             </p>
           </div>
 
@@ -262,7 +262,7 @@ export default function Home() {
       <section className="py-20 bg-circuit">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <BrandShield variant="vault" size={56} animate className="mx-auto mb-8" />
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Start in 5 minutes</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Start with one command</h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
             Clone the repo, run the setup script, and your private AI companion is ready.
           </p>
