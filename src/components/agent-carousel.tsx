@@ -22,7 +22,7 @@ export function AgentCarousel() {
     <div className="w-full max-w-3xl mx-auto">
       <div className="text-center mb-8">
         <div className="gold-line mx-auto w-16 mb-4" />
-        <h2 className="text-3xl font-bold tracking-tight">9 AI Agents</h2>
+        <h2 className="text-3xl font-bold tracking-tight">{AGENTS.length} AI Agents</h2>
         <p className="mt-2 text-muted-foreground">Specialized intelligence for every task.</p>
       </div>
 
