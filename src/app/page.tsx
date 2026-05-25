@@ -14,6 +14,15 @@ import {
   HardDrive,
   KeyRound,
   Github,
+  Rss,
+  Webhook,
+  Mic,
+  Puzzle,
+  Mail,
+  MessageSquare,
+  GitBranch,
+  BookOpen,
+  Bookmark,
 } from "lucide-react"
 import { BrandShield } from "@/components/brand-shield"
 import { ExpandableCard } from "@/components/expandable-card"
@@ -129,6 +138,90 @@ export default function Home() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════ CONNECT EVERYTHING ══════════════ */}
+      <section className="py-20 border-t divider-gold">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <div className="gold-line mx-auto w-16 mb-6" />
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Connect <span className="text-brand-gradient">every</span> source of knowledge
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              22 source connectors out of the box. Webhook receiver, browser extension,
+              voice notes, and first-class Apple Mail + Reminders. Everything streams
+              into the same verified pipeline.
+            </p>
+          </div>
+
+          {/* Source-family tiles */}
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {[
+              { icon: Rss, label: "RSS & Atom" },
+              { icon: Search, label: "URL watch" },
+              { icon: Bookmark, label: "Bookmarks" },
+              { icon: Puzzle, label: "Browser extension" },
+              { icon: Mic, label: "Voice notes" },
+              { icon: FolderOpen, label: "Clipboard" },
+              { icon: Mail, label: "Apple Mail" },
+              { icon: CheckCircle, label: "Reminders" },
+              { icon: MessageSquare, label: "Slack / Discord" },
+              { icon: GitBranch, label: "GitHub / Linear" },
+              { icon: ShieldCheck, label: "Sentry / Stripe" },
+              { icon: BookOpen, label: "Readwise / Pocket" },
+              { icon: Mail, label: "Gmail / Outlook" },
+              { icon: Webhook, label: "Custom webhook" },
+              { icon: Sparkles, label: "+ extensible" },
+            ].map((s) => (
+              <div
+                key={s.label}
+                className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2.5 text-xs text-muted-foreground transition-all hover:border-brand/40 hover:text-foreground hover:shadow-md hover:shadow-brand/5"
+              >
+                <s.icon className="h-3.5 w-3.5 shrink-0 text-brand" />
+                <span className="truncate">{s.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Capability strip */}
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-3">
+            {[
+              {
+                icon: Webhook,
+                title: "Webhooks with HMAC",
+                desc: "Stream into Cerid from any service that fires a webhook. Constant-time signature compare, per-source tokens, rotation built in.",
+              },
+              {
+                icon: Puzzle,
+                title: "Browser extension",
+                desc: "Save the page you're reading — and the passage you highlighted — to your private KB in one click. Chrome + Firefox.",
+              },
+              {
+                icon: Mic,
+                title: "Voice notes",
+                desc: "Record a quick thought, drop it in, and it transcribes + indexes alongside everything else. ⌘⇧V opens the overlay.",
+              },
+            ].map((cap) => (
+              <div key={cap.title} className="flex flex-col bg-card p-7">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand/15 text-brand text-glow-brand">
+                  <cap.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold">{cap.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{cap.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/features#sources"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:text-brand/80 transition-colors"
+            >
+              See every connector and how it auths <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
           </div>
         </div>
       </section>

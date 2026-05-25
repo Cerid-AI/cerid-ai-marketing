@@ -9,6 +9,7 @@ import {
   Search, Bot, Database, ShieldCheck, Brain, FileText,
   Eye, Layers, Cpu, FolderOpen, Lock,
   Sparkles, Network, RefreshCw, Workflow, SlidersHorizontal, Globe,
+  Mic, Puzzle, Rss, Webhook, Mail, Bookmark,
 } from "lucide-react"
 
 /* ─────────────────────────────────────────
@@ -70,6 +71,14 @@ export const FEATURES: Feature[] = [
     detail: "Bulk folder scan with estimation preview. Archive extraction (zip/tar). Automatic junk filtering. SSE progress streaming with pause/resume controls. 30+ file types supported.",
     image: "/badge-architecture.jpg",
   },
+  {
+    iconName: "Rss",
+    title: "Connect anything that produces knowledge",
+    summary: "22 source connectors out of the box — RSS feeds, web pages, bookmarks, browser extension, voice notes, Apple Mail, Reminders, Slack, GitHub, and more.",
+    detail: "22 source kinds across 9 families: web (RSS, URL-watch, bookmarks, browser extension), capture (voice notes, clipboard), Apple ecosystem (Mail, Reminders), chat (Slack, Discord, Teams, Matrix), dev events (GitHub, Linear, Sentry, Stripe), reader apps (Readwise, Pocket, Instapaper, Raindrop), email (Gmail, Outlook). Webhook receiver with HMAC + token auth; OAuth scaffold for Google + Microsoft. Per-source retention + quality floors.",
+    link: { href: "/features#sources", label: "See every source" },
+    image: "/badge-orchestrator.jpg",
+  },
 ]
 
 /* ─────────────────────────────────────────
@@ -107,7 +116,7 @@ export const PERSONAS: Persona[] = [
   {
     icon: Wrench,
     title: "For builders who want full control",
-    highlight: "Self-host with Docker. 21 MCP tools + any external MCP server. 9 specialist agents + a custom-agents builder. Bring your own model or run Ollama free.",
+    highlight: "Self-host with Docker. 60 MCP tools + any external MCP server. 12 specialist agents + a custom-agents builder. 22 source connectors. Bring your own model or run Ollama free.",
     bullets: [
       "Full REST API with versioned /sdk/v1/ surface + Python SDK",
       "Governed external MCP client — allowlist + per-call audit + kill switch",
@@ -304,6 +313,49 @@ export const CATEGORIES: FeatureCategory[] = [
     ],
   },
   {
+    id: "sources",
+    title: "Connect & Capture",
+    badge: "Core",
+    features: [
+      {
+        icon: Rss,
+        title: "22 Source Connectors",
+        casual: "Pull knowledge from the places it already lives — RSS feeds, web pages, bookmarks, chat apps, reader apps, email, and dev events.",
+        technical: "22 source kinds across 9 families behind a single `SourceConnector` protocol (connect / fetch_since / health_check / disconnect). Web (RSS, URL-watch, bookmarks, browser extension), capture (voice notes, clipboard), Apple ecosystem (Mail, Reminders), chat (Slack, Discord, Teams, Matrix), dev events (GitHub, Linear, Sentry, Stripe), reader apps (Readwise, Pocket, Instapaper, Raindrop, Telegram), email (Gmail, Outlook). Redis-first sync cursor with Neo4j durable fallback.",
+      },
+      {
+        icon: Webhook,
+        title: "Webhook Receiver",
+        casual: "Any service that can fire a webhook can stream into Cerid — Slack messages, GitHub events, Linear updates, Sentry errors, Stripe receipts.",
+        technical: "POST /sdk/v1/ingest/webhook/{token} with HMAC SHA-256 + constant-time compare. Adapter-recipe registry routes incoming payloads to canonical kinds via (kind, provider) lookup with provider→kind fallback. Per-source share card returns curl example + receiver URL. Token rotation supported.",
+      },
+      {
+        icon: Puzzle,
+        title: "Browser Extension",
+        casual: "One click in Chrome or Firefox saves the page you're reading to your private knowledge base — including the selection, if you highlighted one.",
+        technical: "Manifest V3 extension scaffold (Vite build, chrome.scripting.executeScript). Save-to-Cerid page action posts cleaned page text + URL + selection through the same /sdk/v1/ingest surface as the rest of the connectors. Authenticated against the local Cerid daemon.",
+      },
+      {
+        icon: Mic,
+        title: "Voice Notes",
+        casual: "Record a quick thought, drop it into Cerid, and it transcribes + indexes alongside everything else.",
+        technical: "POST /sdk/v1/ingest/voice-note (multipart). Routes through the meeting-capture decode + transcribe pipeline. WebAudio AnalyserNode + MediaRecorder for live waveform preview. ⌘⇧V global hotkey opens the overlay.",
+      },
+      {
+        icon: Mail,
+        title: "Apple Mail + Reminders",
+        casual: "First-class Mac integration — Cerid reads your Apple Mail archive and Reminders lists via signed Swift binaries with explicit TCC entitlements.",
+        technical: "CeridMail (Mail.app archive reader) and CeridReminders (EventKit with requestFullAccessToReminders) ship as separate Swift packages. Python connectors shell out to the binaries with `{scan | since}` CLI. 3 Apple Shortcuts templates (save-to-cerid, search-cerid, ask-cerid) for system-wide quick-capture.",
+      },
+      {
+        icon: Bookmark,
+        title: "Retention & Quality Floors",
+        casual: "Set how long each source keeps content — forever, last N days, or last N items — and screen out low-quality items per source.",
+        technical: "Per-source retention modes: keep_all / days / count. Quality floors in [0.0, 1.0] with memoized lookup + Chroma + Neo4j atomic deletes. Nightly retention enforcement scheduler walks every Source and applies its plan.",
+      },
+    ],
+  },
+  {
     id: "automation",
     title: "Automation",
     badge: "Pro",
@@ -353,8 +405,11 @@ export const PLANS: Plan[] = [
     ctaHref: "https://github.com/Cerid-AI/cerid-ai",
     ctaStyle: "border border-border bg-background hover:bg-accent hover:text-accent-foreground",
     features: [
-      "9 specialist agents + custom-agents builder (4 starter templates)",
-      "21 MCP tools + any external MCP server (governed allowlist + audit)",
+      "12 specialist agents + custom-agents builder (4 starter templates)",
+      "60 MCP tools + any external MCP server (governed allowlist + audit)",
+      "22 source connectors across 9 families (RSS, web, bookmarks, chat, dev events, reader apps, voice, Apple ecosystem)",
+      "Webhook receiver with HMAC + token auth; browser extension (Chrome + Firefox)",
+      "Per-source retention modes + quality floors",
       "Strict-Agents Mode kill switch (STRICT_AGENTS_ONLY env var)",
       "Governed MCP Client (MCP_CLIENT_MODE: permissive / allowlist / disabled)",
       "Unified RAG (Manual + Smart modes), hybrid BM25 + vector",
@@ -362,7 +417,7 @@ export const PLANS: Plan[] = [
       "6-type memory layer with salience scoring",
       "Ollama local LLM ($0 pipeline costs)",
       "Cross-encoder reranking (ONNX, platform-aware: CUDA / CoreML / CPU)",
-      "Python SDK (cerid-sdk) + 12 stable /sdk/v1/ endpoints",
+      "Python SDK (cerid-sdk) + stable /sdk/v1/ endpoints",
       "Bulk folder import with preview",
       "Multi-machine sync via Dropbox",
       "Simple / Advanced UI mode",
@@ -417,7 +472,7 @@ export const PLANS: Plan[] = [
 ]
 
 /* ─────────────────────────────────────────
-   Agent carousel — 9 agents (accurate count)
+   Agent carousel — 12 specialist agents.
    Note: Decomposer and Assembler are pipeline
    stages within query_agent, not separate agents.
 ───────────────────────────────────────── */
@@ -473,5 +528,20 @@ export const AGENTS: Agent[] = [
     name: "Verification",
     desc: "Validates every AI claim against KB, external sources, and cross-model verification.",
     color: "text-brand",
+  },
+  {
+    name: "Router",
+    desc: "Picks the right retrieval surface — wiki, vector, graph, or episodic memory — based on the question's intent.",
+    color: "text-brand",
+  },
+  {
+    name: "Entity",
+    desc: "Extracts named entities and relationships so the knowledge graph reflects how your documents actually connect.",
+    color: "text-brand",
+  },
+  {
+    name: "Digest",
+    desc: "Composes daily summaries from what's new in your knowledge base — fresh ingests, follow-ups, and unresolved threads.",
+    color: "text-gold",
   },
 ]
