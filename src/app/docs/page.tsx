@@ -17,23 +17,24 @@ const DOC_SECTIONS = [
     icon: BookOpen,
     docs: [
       { name: "README", desc: "Quick start, architecture overview, and setup instructions", href: `${GITHUB}/README.md` },
-      { name: "Setup Guide", desc: "Step-by-step installation with Docker Compose", href: `${GITHUB}/README.md#quick-start` },
-      { name: "Configuration", desc: "All configurable env vars, secrets management, and defaults", href: `${GITHUB}/README.md#configuration` },
+      { name: "Install Guide", desc: "Step-by-step installation with Docker Compose", href: `${GITHUB}/INSTALL.md` },
+      { name: "Environment Variables", desc: "Every configurable env var with defaults and naming conventions", href: `${GITHUB}/docs/ENV_CONVENTIONS.md` },
     ],
   },
   {
     title: "API Reference",
     icon: Code2,
     docs: [
-      { name: "REST API Reference", desc: "All endpoints — query, ingest, agents, sync, chat, and authentication", href: `${GITHUB}/README.md#rest-api` },
-      { name: "MCP Tools", desc: "18 tools for knowledge base, memory, and verification via MCP protocol", href: `${GITHUB}/README.md#rest-api` },
-      { name: "SDK Reference", desc: "Stable versioned API for external consumers at /sdk/v1/", href: `${GITHUB}/README.md#rest-api` },
+      { name: "REST API Reference", desc: "Every endpoint — query, ingest, agents, sync, chat, and authentication", href: `${GITHUB}/docs/API_REFERENCE.md` },
+      { name: "MCP Tools", desc: "60 tools for knowledge base, memory, and verification via the MCP protocol", href: `${GITHUB}/docs/MCP_TOOL_STYLE.md` },
+      { name: "SDK Guide", desc: "Stable versioned API for external consumers at /sdk/v1/", href: `${GITHUB}/docs/SDK_GUIDE.md` },
     ],
   },
   {
     title: "Architecture",
     icon: Layers,
     docs: [
+      { name: "Architecture Overview", desc: "Services, data flow, layer contracts, and the observability tier", href: `${GITHUB}/docs/ARCHITECTURE.md` },
       { name: "Changelog", desc: "Version history with features, improvements, and fixes", href: `${GITHUB}/CHANGELOG.md` },
       { name: "Tier Comparison", desc: "Feature availability across Core, Pro, and Enterprise tiers", href: "/pricing" },
     ],
@@ -43,6 +44,7 @@ const DOC_SECTIONS = [
     icon: Shield,
     docs: [
       { name: "Security Architecture", desc: "Local-first design, encryption, infrastructure hardening", href: "/security" },
+      { name: "Security Policy", desc: "Responsible disclosure process and supported-version policy", href: `${GITHUB}/SECURITY.md` },
       { name: "License", desc: "Apache-2.0 (Core), BSL-1.1 (Pro plugins), Commercial (Enterprise)", href: `${GITHUB}/LICENSE` },
     ],
   },
@@ -51,6 +53,7 @@ const DOC_SECTIONS = [
     icon: Cpu,
     docs: [
       { name: "Contributing", desc: "Development setup, testing, and contribution guidelines", href: `${GITHUB}/CONTRIBUTING.md` },
+      { name: "Code of Conduct", desc: "Community standards for contributors and maintainers", href: `${GITHUB}/CODE_OF_CONDUCT.md` },
     ],
   },
 ]

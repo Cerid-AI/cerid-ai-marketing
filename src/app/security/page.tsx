@@ -30,7 +30,7 @@ const SECURITY_FEATURES = [
     iconName: "Shield",
     title: "Strict-Agents Mode",
     description: "Single env var disables every user-defined agent endpoint with 403 — fleet-wide kill switch.",
-    detail: "STRICT_AGENTS_ONLY=true wires a FastAPI router-level dependency that returns 403 on every /custom-agents endpoint before the request body executes — no Neo4j hit, no agent load, no runtime exposure. The flag is read at request time so operators can flip it without restarting the process. Every denial is logged at WARNING for incident-response audit. The 10 built-in specialist agents remain available. Designed for regulated deployments where end-user agent customization isn't acceptable.",
+    detail: "STRICT_AGENTS_ONLY=true wires a FastAPI router-level dependency that returns 403 on every /custom-agents endpoint before the request body executes — no Neo4j hit, no agent load, no runtime exposure. The flag is read at request time so operators can flip it without restarting the process. Every denial is logged at WARNING for incident-response audit. The 12 built-in specialist agents remain available. Designed for regulated deployments where end-user agent customization isn't acceptable.",
   },
   {
     iconName: "ShieldCheck",
@@ -72,7 +72,7 @@ const SECURITY_FEATURES = [
     iconName: "ShieldCheck",
     title: "CI/CD Security",
     description: "Secret detection. Dependency audit. Type checking.",
-    detail: "The 8-job CI pipeline includes: detect-secrets scanning all tracked files, bandit static analysis for Python security issues, pip-audit for dependency vulnerabilities (including transitive), Trivy container image scanning for CRITICAL/HIGH CVEs, ruff linting with inline tier-check enforcement, and mypy type checking. All jobs must pass before the Docker image is built.",
+    detail: "The 7-job CI pipeline includes: detect-secrets scanning all tracked files, bandit static analysis for Python security issues, pip-audit for dependency vulnerabilities (including transitive), Trivy container image scanning for CRITICAL/HIGH CVEs, ruff linting with inline tier-check enforcement, and mypy type checking. All jobs must pass before the Docker image is built.",
   },
 ]
 
@@ -178,6 +178,35 @@ export default function SecurityPage() {
             Audit the security model yourself. Run it on your own
             infrastructure. No trust required.
           </p>
+        </div>
+      </section>
+
+      {/* Responsible disclosure */}
+      <section className="border-t divider-gold bg-muted/30 py-16">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <div className="gold-line mx-auto w-16 mb-6" />
+          <h2 className="text-2xl font-bold tracking-tight">Responsible disclosure</h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            Found a vulnerability? Please report it privately so we can fix it before
+            it gets exploited. We acknowledge within 48 hours and aim to ship a fix
+            within 30 days.
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <a
+              href="mailto:security@cerid.ai"
+              className="inline-flex h-11 items-center gap-2 rounded-lg bg-brand px-6 text-sm font-semibold text-brand-foreground shadow-lg shadow-brand/20 hover:bg-brand/90 transition-all"
+            >
+              security@cerid.ai
+            </a>
+            <a
+              href="https://github.com/Cerid-AI/cerid-ai/blob/main/SECURITY.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Read the full security policy →
+            </a>
+          </div>
         </div>
       </section>
     </>
