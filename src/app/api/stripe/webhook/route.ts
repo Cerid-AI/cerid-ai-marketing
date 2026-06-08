@@ -11,7 +11,7 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 
 import { generateLicenseKey } from "@/lib/license";
-import { getStripe } from "@/lib/stripe";
+import { getStripe, verifiedProCheckoutEmail } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 
@@ -37,12 +37,14 @@ export async function POST(req: Request) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
-    const email = session.customer_details?.email ?? session.customer_email ?? "";
+    // Re-verify server-side that this is a completed Pro purchase before minting
+    // (don't trust the event payload's shape alone).
+    const email = await verifiedProCheckoutEmail(session.id);
     if (email) {
       const key = generateLicenseKey(email, "pro", 365);
       console.info("Issued Pro license key for %s (%s…)", email, key.slice(0, 14));
     } else {
-      console.warn("checkout.session.completed without an email; no key issued");
+      console.warn("checkout.session.completed not a verified Pro purchase; no key issued");
     }
   }
 

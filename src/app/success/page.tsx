@@ -7,7 +7,7 @@
 import Link from "next/link";
 
 import { generateLicenseKey } from "@/lib/license";
-import { getStripe } from "@/lib/stripe";
+import { verifiedProCheckoutEmail } from "@/lib/stripe";
 
 import { LicenseKeyDisplay } from "./license-key-display";
 
@@ -28,20 +28,18 @@ export default async function SuccessPage({
     error = "Missing checkout session.";
   } else {
     try {
-      const session = await getStripe().checkout.sessions.retrieve(sessionId);
-      // A trial subscription completes with payment_status "no_payment_required",
-      // so gate on the session being complete, not on an immediate charge.
-      const complete = session.status === "complete";
-      email = session.customer_details?.email ?? "";
-      if (complete && email) {
+      // Only mint when the session is a genuinely completed purchase of a Pro
+      // price (verified server-side) — not any arbitrary completed session.
+      email = (await verifiedProCheckoutEmail(sessionId)) ?? "";
+      if (email) {
         licenseKey = generateLicenseKey(email, "pro", 365);
-      } else if (!complete) {
-        error = "This checkout is not complete yet. If you just paid, refresh in a moment.";
       } else {
-        error = "We couldn't read your email from the checkout. Contact support@cerid.ai.";
+        error =
+          "We couldn't verify a completed Pro checkout for this session. " +
+          "If you just paid, refresh in a moment, or contact support@cerid.ai.";
       }
     } catch (e) {
-      console.error("Success page session retrieve failed:", e);
+      console.error("Success page verification failed:", e);
       error = "We couldn't verify your checkout. Contact support@cerid.ai.";
     }
   }

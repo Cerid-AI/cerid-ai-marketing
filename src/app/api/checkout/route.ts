@@ -6,7 +6,7 @@
 
 import { NextResponse } from "next/server";
 
-import { getStripe } from "@/lib/stripe";
+import { getStripe, siteUrl } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 
@@ -29,7 +29,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Pricing is not configured." }, { status: 503 });
   }
 
-  const origin = req.headers.get("origin") ?? new URL(req.url).origin;
+  // Server-configured base URL — NEVER the request Origin header (an attacker
+  // could steer the post-payment redirect, leaking the session_id off-site).
+  const base = siteUrl();
   try {
     const session = await getStripe().checkout.sessions.create({
       mode: "subscription",
@@ -37,8 +39,8 @@ export async function POST(req: Request) {
       subscription_data: { trial_period_days: 14 },
       allow_promotion_codes: true,
       billing_address_collection: "auto",
-      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/pricing`,
+      success_url: `${base}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${base}/pricing`,
     });
     return NextResponse.json({ url: session.url });
   } catch (e) {
