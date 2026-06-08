@@ -56,8 +56,11 @@ export default async function SuccessPage({
           </p>
           <LicenseKeyDisplay licenseKey={licenseKey} />
           <p className="text-sm text-muted-foreground">
-            Manage or cancel your subscription anytime from{" "}
-            <span className="font-medium">Settings → Pro → Manage billing</span>.
+            Manage or cancel your subscription anytime at{" "}
+            <Link href="/billing" className="font-medium underline">
+              cerid.ai/billing
+            </Link>
+            .
           </p>
         </>
       ) : (
