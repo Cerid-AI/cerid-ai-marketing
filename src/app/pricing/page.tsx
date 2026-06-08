@@ -10,6 +10,7 @@ import { Check, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { BrandShield } from "@/components/brand-shield"
+import { SubscribeButton } from "@/components/subscribe-button"
 import { PLANS } from "@/lib/content"
 
 export default function PricingPage() {
@@ -58,15 +59,29 @@ export default function PricingPage() {
                   <CardDescription className="mt-2">{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-1 flex-col">
-                  <Link
-                    href={plan.ctaHref}
-                    target={plan.ctaHref.startsWith("http") ? "_blank" : undefined}
-                    rel={plan.ctaHref.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className={`inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg text-sm font-medium shadow-sm transition-all ${plan.ctaStyle}`}
-                  >
-                    {plan.cta}
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
+                  {plan.variant === "pro" ? (
+                    <div className="flex flex-col gap-2">
+                      <SubscribeButton plan="monthly" className={plan.ctaStyle}>
+                        {plan.cta}
+                      </SubscribeButton>
+                      <SubscribeButton
+                        plan="annual"
+                        className="border border-border bg-background hover:bg-accent hover:text-accent-foreground"
+                      >
+                        Pay annually — $144/yr (save 20%)
+                      </SubscribeButton>
+                    </div>
+                  ) : (
+                    <Link
+                      href={plan.ctaHref}
+                      target={plan.ctaHref.startsWith("http") ? "_blank" : undefined}
+                      rel={plan.ctaHref.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className={`inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg text-sm font-medium shadow-sm transition-all ${plan.ctaStyle}`}
+                    >
+                      {plan.cta}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
 
                   <ul className="mt-6 flex-1 space-y-3">
                     {plan.features.map((feature) => (
