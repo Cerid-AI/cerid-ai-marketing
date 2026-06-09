@@ -52,8 +52,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} Cerid AI. All rights reserved.
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-border pt-6 text-center text-xs text-muted-foreground">
+          <span>&copy; {new Date().getFullYear()} Cerid AI. All rights reserved.</span>
+          <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
+          <Link href="/terms" className="hover:text-foreground">Terms</Link>
+          <Link href="/security" className="hover:text-foreground">Security</Link>
         </div>
       </div>
     </footer>
