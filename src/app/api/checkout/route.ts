@@ -39,6 +39,12 @@ export async function POST(req: Request) {
       subscription_data: { trial_period_days: 14 },
       allow_promotion_codes: true,
       billing_address_collection: "auto",
+      custom_text: {
+        submit: {
+          message:
+            "Private, self-hosted AI. Your 14-day trial starts now — cancel anytime from Settings → Pro.",
+        },
+      },
       success_url: `${base}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${base}/pricing`,
     });
