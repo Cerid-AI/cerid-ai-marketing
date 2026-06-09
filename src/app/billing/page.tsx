@@ -19,7 +19,10 @@ export const dynamic = "force-dynamic";
 const DEFAULT_PORTAL_URL = "https://billing.stripe.com/p/login/bJe7sNgt4552czy8hO2wU00";
 
 export default function BillingPage() {
-  const portalUrl = process.env.STRIPE_PORTAL_URL ?? DEFAULT_PORTAL_URL;
+  // `||` (not `??`) so an empty/whitespace STRIPE_PORTAL_URL also falls back to
+  // the default — a present-but-empty env var must not strand /billing on the
+  // support page.
+  const portalUrl = process.env.STRIPE_PORTAL_URL?.trim() || DEFAULT_PORTAL_URL;
   if (portalUrl) redirect(portalUrl);
 
   // Fallback when the portal login link isn't configured yet.
