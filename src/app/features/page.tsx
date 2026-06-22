@@ -89,16 +89,26 @@ export default function FeaturesPage() {
       <section className="py-20 bg-circuit">
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-            <div className="flex justify-center">
-              <img src="/architecture.jpg" alt="Extensible Architecture" className="w-full max-w-sm rounded-xl border border-border/30 shadow-xl" loading="lazy" />
+            <div>
+              <div className="rounded-2xl overflow-hidden border border-border/40 shadow-2xl bg-black">
+                <video
+                  src="/cerid-90s-demo.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-auto"
+                  poster="/hero-shield.jpg"
+                />
+              </div>
             </div>
             <div className="text-center md:text-left">
               <div className="gold-line w-16 mb-4 mx-auto md:mx-0" />
               <h2 className="text-2xl font-bold">See it in action</h2>
               <p className="mt-3 text-muted-foreground">
-                Clone the repo and run one command. 12 specialist agents +
-                custom-agents builder, 60 MCP tools + any external MCP server,
-                22 source connectors — all yours.
+                90-second walkthrough of the full experience: claim-by-claim verification, 3D subjects, automatic memory extraction, live source activity, and transparent TrustScore.
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Clone the repo and run one command. 12 specialist agents + custom-agents builder, 60 MCP tools, 22 source connectors — all yours.
               </p>
               <Link
                 href="https://github.com/Cerid-AI/cerid-ai"

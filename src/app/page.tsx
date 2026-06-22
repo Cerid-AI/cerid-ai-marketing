@@ -113,6 +113,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══════════════ DEMO VIDEO ══════════════ */}
+      <section className="py-16 border-t border-border bg-muted/10">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-8">
+            <div className="gold-line mx-auto w-16 mb-6" />
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">See it in action</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              90-second walkthrough: verified answers, subjects visualization, automatic memory, live sources, and TrustScore transparency.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-[960px]">
+            <div className="relative rounded-2xl overflow-hidden border border-border/40 shadow-2xl bg-black">
+              <video
+                src="/cerid-90s-demo.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-auto"
+                poster="/hero-shield.jpg"
+              />
+            </div>
+            <p className="mt-3 text-center text-xs text-muted-foreground">No sign-up. No cloud. Everything stays on your machine.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ══════════════ HOW IT WORKS ══════════════ */}
       <section className="py-20 border-t divider-gold">
         <div className="mx-auto max-w-6xl px-6">
