@@ -140,6 +140,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══════════════ FINANCE DEMO ══════════════ */}
+      <section className="py-16 border-t divider-gold">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="rounded-2xl border border-border/50 bg-card/60 p-8 md:p-10 md:flex md:items-center md:justify-between md:gap-10">
+            <div className="max-w-xl">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-xs text-brand">
+                Interactive demo · synthetic data
+              </div>
+              <h2 className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">
+                Cerid Finance — command center
+              </h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                Explore Overview, Budget Sankey, and 3D net-worth trajectory with fictional household data.
+                Self-host for your real accounts — nothing leaves your machine.
+              </p>
+            </div>
+            <div className="mt-6 md:mt-0 shrink-0 flex flex-col items-stretch gap-3">
+              <Link
+                href="https://finance.cerid.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-brand px-7 text-sm font-semibold text-brand-foreground shadow-lg shadow-brand/20 transition-all hover:bg-brand/90"
+              >
+                Open Finance demo
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <p className="text-center text-[11px] text-muted-foreground">
+                finance.cerid.ai · read-only mockup
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══════════════ HOW IT WORKS ══════════════ */}
       <section className="py-20 border-t divider-gold">
         <div className="mx-auto max-w-6xl px-6">

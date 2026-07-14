@@ -28,6 +28,15 @@ export default function FeaturesPage() {
                 Every capability, from casual use to enterprise deployment.
                 Click any feature card for technical details.
               </p>
+              <Link
+                href="https://finance.cerid.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex h-11 items-center gap-2 rounded-lg border border-brand/40 bg-brand/10 px-5 text-sm font-semibold text-brand transition-colors hover:bg-brand/20"
+              >
+                Try Cerid Finance demo
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
             <div className="flex justify-center">
               <img src="/hero-tagline.jpg" alt="Cerid — Your Private AI Knowledge Companion" className="w-full max-w-lg rounded-xl border border-border/30 shadow-xl" />
