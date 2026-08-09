@@ -174,7 +174,7 @@ export default function SecurityPage() {
             Open source. Auditable. Yours.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Every line of code is open source under the Apache 2.0 license.
+            Every line of code is source-available under FSL-1.1-ALv2 (converting to Apache-2.0 two years after each release), so you can audit exactly what runs on your machine.
             Audit the security model yourself. Run it on your own
             infrastructure. No trust required.
           </p>

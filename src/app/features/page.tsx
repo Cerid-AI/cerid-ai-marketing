@@ -117,7 +117,7 @@ export default function FeaturesPage() {
                 90-second walkthrough of the full experience: claim-by-claim verification, 3D subjects, automatic memory extraction, live source activity, and transparent TrustScore.
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
-                Clone the repo and run one command. 12 specialist agents + custom-agents builder, 60 MCP tools, 22 source connectors — all yours.
+                Clone the repo and run one command. 12 specialist agents + custom-agents builder, 55 MCP tools, 22 source connectors — all yours.
               </p>
               <Link
                 href="https://github.com/Cerid-AI/cerid-ai"

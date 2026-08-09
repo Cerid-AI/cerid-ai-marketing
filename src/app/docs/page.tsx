@@ -26,7 +26,7 @@ const DOC_SECTIONS = [
     icon: Code2,
     docs: [
       { name: "REST API Reference", desc: "Every endpoint — query, ingest, agents, sync, chat, and authentication", href: `${GITHUB}/docs/API_REFERENCE.md` },
-      { name: "MCP Tools", desc: "60 tools for knowledge base, memory, and verification via the MCP protocol", href: `${GITHUB}/docs/MCP_TOOL_STYLE.md` },
+      { name: "MCP Tools", desc: "55 tools for knowledge base, memory, and verification via the MCP protocol", href: `${GITHUB}/docs/MCP_TOOL_STYLE.md` },
       { name: "SDK Guide", desc: "Stable versioned API for external consumers at /sdk/v1/", href: `${GITHUB}/docs/SDK_GUIDE.md` },
     ],
   },
@@ -45,7 +45,7 @@ const DOC_SECTIONS = [
     docs: [
       { name: "Security Architecture", desc: "Local-first design, encryption, infrastructure hardening", href: "/security" },
       { name: "Security Policy", desc: "Responsible disclosure process and supported-version policy", href: `${GITHUB}/SECURITY.md` },
-      { name: "License", desc: "Apache-2.0 (Core), BSL-1.1 (Pro plugins), Commercial (Enterprise)", href: `${GITHUB}/LICENSE` },
+      { name: "License", desc: "FSL-1.1-ALv2 (Core, → Apache-2.0 after 2 years), Apache-2.0 (SDKs), BUSL-1.1 (plugins)", href: `${GITHUB}/LICENSE` },
     ],
   },
   {

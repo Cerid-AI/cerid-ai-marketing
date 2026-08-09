@@ -61,7 +61,7 @@ export const FEATURES: Feature[] = [
     iconName: "Lock",
     title: "Your data never leaves your device",
     summary: "Everything runs on your machine. No cloud uploads, no telemetry by default. Only the query context you choose is sent to the AI model.",
-    detail: "Self-hosted Docker stack with ChromaDB, Neo4j, Redis — all on your machine. Optional Fernet encryption at rest. Open source Apache-2.0.",
+    detail: "Self-hosted Docker stack with ChromaDB, Neo4j, Redis — all on your machine. Optional Fernet encryption at rest. Source-available (FSL-1.1-ALv2).",
     image: "/badge-secure.jpg",
   },
   {
@@ -116,11 +116,11 @@ export const PERSONAS: Persona[] = [
   {
     icon: Wrench,
     title: "For builders who want full control",
-    highlight: "Self-host with Docker. 60 MCP tools + any external MCP server. 12 specialist agents + a custom-agents builder. 22 source connectors. Bring your own model or run Ollama free.",
+    highlight: "Self-host with Docker. 55 MCP tools + any external MCP server. 12 specialist agents + a custom-agents builder. 22 source connectors. Bring your own model or run Ollama free.",
     bullets: [
       "Full REST API with versioned /sdk/v1/ surface + Python SDK",
       "Governed external MCP client — allowlist + per-call audit + kill switch",
-      "Apache-2.0 licensed — fork it, extend it, ship it",
+      "Source-available (FSL-1.1-ALv2 → Apache-2.0 after two years) — audit it, extend it, self-host it",
     ],
   },
 ]
@@ -406,7 +406,7 @@ export const PLANS: Plan[] = [
     ctaStyle: "border border-border bg-background hover:bg-accent hover:text-accent-foreground",
     features: [
       "12 specialist agents + custom-agents builder (4 starter templates)",
-      "60 MCP tools + any external MCP server (governed allowlist + audit)",
+      "55 MCP tools + any external MCP server (governed allowlist + audit)",
       "22 source connectors across 9 families (RSS, web, bookmarks, chat, dev events, reader apps, voice, Apple ecosystem)",
       "Webhook receiver with HMAC + token auth; browser extension (Chrome + Firefox)",
       "Per-source retention modes + quality floors",

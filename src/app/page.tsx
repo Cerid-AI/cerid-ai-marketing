@@ -77,6 +77,18 @@ export default function Home() {
                 </Link>
               </div>
 
+              {/* Desktop apps — signed + notarized as of v1.0.1 */}
+              <p className="mt-4 text-sm text-muted-foreground md:text-left text-center">
+                Or grab the desktop app:{" "}
+                <a href="https://github.com/Cerid-AI/cerid-ai/releases/latest" className="font-medium text-brand underline-offset-4 hover:underline">
+                  macOS (signed &amp; notarized)
+                </a>{" "}
+                ·{" "}
+                <a href="https://github.com/Cerid-AI/cerid-ai/releases/latest" className="font-medium text-brand underline-offset-4 hover:underline">
+                  Windows
+                </a>
+              </p>
+
               {/* Tier pills */}
               <div className="mt-8 flex flex-wrap items-center gap-2.5 md:justify-start justify-center">
                 <span className="rounded-full border border-brand/40 bg-brand/10 px-3 py-1 text-[11px] font-semibold tracking-wide text-brand uppercase">Core — Free</span>
@@ -101,7 +113,7 @@ export default function Home() {
                 { value: "100%", label: "Private" },
                 { value: "30+", label: "File Types" },
                 { value: "1-cmd", label: "Setup" },
-                { value: "Apache-2.0", label: "Open Source" },
+                { value: "FSL-1.1", label: "Source-Available" },
               ].map((s) => (
                 <div key={s.label} className="min-w-[70px]">
                   <p className="text-2xl font-bold text-brand text-glow-brand">{s.value}</p>
@@ -401,7 +413,7 @@ export default function Home() {
                 <Github className="h-5 w-5" />
               </div>
               <h3 className="text-base font-semibold">Open source</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Apache-2.0 licensed. Audit every line of code.</p>
+              <p className="mt-2 text-sm text-muted-foreground">Source-available under FSL-1.1-ALv2 — audit every line; each release converts to Apache-2.0 after two years.</p>
             </div>
           </div>
           <div className="mt-6 text-center">

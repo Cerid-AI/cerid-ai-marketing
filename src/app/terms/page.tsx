@@ -32,7 +32,7 @@ export default function TermsPage() {
       <div className="mt-10 space-y-10">
         <Section title="The software">
           <p>
-            Cerid Core is open-source software distributed under the Apache-2.0 license; your use of the
+            Cerid Core is source-available software distributed under the FSL-1.1-ALv2 license (each release becomes Apache-2.0 two years after publication); your use of the
             source code is governed by that license. Cerid AI is self-hosted — you run it on your own
             infrastructure and are responsible for your deployment, data, and any model-provider keys
             you configure.
