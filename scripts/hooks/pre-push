@@ -7,15 +7,50 @@
 # Escape hatch: git push --no-verify
 set -euo pipefail
 
-ZERO=0000000000000000000000000000000000000000
-deleting_only=true
-while read -r _l local_sha _r _rs; do
-  [ "$local_sha" != "$ZERO" ] && deleting_only=false
-done
-$deleting_only && exit 0
+# `git push` opens the connection to the remote BEFORE running this hook, so
+# every second spent validating here leaves that connection idle and GitHub
+# eventually closes it ("Connection to github.com closed by remote host").
+# scripts/safe-push.sh calls this hook with --validate-only FIRST, records the
+# commit that passed, and only then pushes; the stamp check below lets the real
+# hook return in seconds. Prefer `make push`. Do NOT reach for --no-verify: the
+# supply-chain guard runs at the bottom of this file, so bypassing a TRANSPORT
+# problem would silently bypass a SECURITY check.
+VALIDATE_ONLY=false
+[ "${1:-}" = "--validate-only" ] && VALIDATE_ONLY=true
+
+PUSHING_SHA=""
+if ! $VALIDATE_ONLY; then
+  ZERO=0000000000000000000000000000000000000000
+  deleting_only=true
+  while read -r _l local_sha _r _rs; do
+    [ "$local_sha" != "$ZERO" ] && deleting_only=false
+    [ "$local_sha" != "$ZERO" ] && PUSHING_SHA="$local_sha"
+  done
+  $deleting_only && exit 0
+fi
 
 cd "$(git rev-parse --show-toplevel)"
-echo "── pre-push: full local validation (override: git push --no-verify) ──"
+
+# git EXPORTS its repository pointers to hooks, and this hook runs a test suite.
+# Anything that shells out to `git` inherits them, and an ambient GIT_DIR
+# outranks cwd — that combination once wrote into the operator's own
+# .git/config. Cleared after the cd so the hook still resolves its own repo.
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_OBJECT_DIRECTORY \
+      GIT_ALTERNATE_OBJECT_DIRECTORIES GIT_COMMON_DIR GIT_PREFIX GIT_QUARANTINE_PATH
+
+STAMP=".git/prepush-validated"
+if ! $VALIDATE_ONLY && [ -n "$PUSHING_SHA" ] && [ -f "$STAMP" ] \
+   && [ "$(cat "$STAMP" 2>/dev/null)" = "$PUSHING_SHA" ]; then
+  echo "── pre-push: ✓ $(printf '%.12s' "$PUSHING_SHA") already validated by safe-push — pushing ──"
+  exit 0
+fi
+
+if ! $VALIDATE_ONLY; then
+  echo "   NOTE: validating inside the hook holds the remote connection open and can"
+  echo "         fail with 'Connection to github.com closed by remote host'."
+  echo "         Prefer: make push"
+fi
+echo "── pre-push: full local validation ──"
 
 # Prefer a repo-defined target if present (internal has `make ci-local`).
 if [ -f Makefile ] && grep -qE '^ci-local:' Makefile; then
