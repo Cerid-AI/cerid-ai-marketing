@@ -98,6 +98,50 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* How activation works — self-hosted buyers need to know what they
+          receive and how it reaches their own server before they'll pay. */}
+      <section className="border-t divider-gold py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="mb-10 text-center">
+            <div className="gold-line mx-auto mb-4 w-16" />
+            <h2 className="text-2xl font-bold tracking-tight">How Pro reaches your server</h2>
+            <p className="mt-3 text-muted-foreground">
+              Cerid runs on your hardware. Nothing here ever connects to your instance.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {[
+              {
+                step: "1",
+                title: "Check out here",
+                body: "Payment is handled on this site by Stripe. Your Cerid server never talks to a payment provider.",
+              },
+              {
+                step: "2",
+                title: "Get a license key",
+                body: "You receive a signed key immediately after checkout, and again in your receipt email.",
+              },
+              {
+                step: "3",
+                title: "Paste it into the app",
+                body: "Settings → Plan & Billing → Activate. Verified offline, so it works air-gapped. No reinstall.",
+              },
+            ].map((s) => (
+              <div key={s.step} className="rounded-lg border border-border bg-card px-5 py-4">
+                <p className="text-xs font-semibold text-brand">STEP {s.step}</p>
+                <p className="mt-1 text-sm font-semibold">{s.title}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Want to try before paying anything? Install Core and start a{" "}
+            <span className="font-medium text-foreground">14-day Pro trial in the app</span> —
+            no credit card, no account.
+          </p>
+        </div>
+      </section>
+
       {/* Deployment */}
       <section className="border-t divider-gold bg-circuit py-20">
         <div className="mx-auto max-w-4xl px-6">

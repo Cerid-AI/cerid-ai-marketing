@@ -51,8 +51,9 @@ export default async function SuccessPage({
           <h1 className="text-3xl font-semibold">You&apos;re on Cerid Pro 🎉</h1>
           <p className="text-muted-foreground">
             Here&apos;s your license key{email ? ` for ${email}` : ""}. In your Cerid app, open{" "}
-            <span className="font-medium">Settings → Pro</span> and paste it to unlock Pro.
-            Keep it somewhere safe — you can always re-open this page from your receipt.
+            <span className="font-medium">Settings → Plan &amp; Billing</span>, paste it into the
+            license field, and choose Activate. Keep it somewhere safe — you can always re-open
+            this page from your receipt.
           </p>
           <LicenseKeyDisplay licenseKey={licenseKey} />
           <p className="text-sm text-muted-foreground">
