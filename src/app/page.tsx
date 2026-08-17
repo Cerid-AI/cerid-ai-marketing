@@ -25,6 +25,7 @@ import {
   Bookmark,
 } from "lucide-react"
 import { BrandShield } from "@/components/brand-shield"
+import { DemoVideo } from "@/components/demo-video"
 import { ExpandableCard } from "@/components/expandable-card"
 import { FEATURES, PERSONAS } from "@/lib/content"
 
@@ -49,7 +50,7 @@ export default function Home() {
             <div className="text-center md:text-left">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-4 py-1.5 text-sm text-brand">
                 <Sparkles className="h-3.5 w-3.5" />
-                Open source &middot; Self-hosted &middot; Privacy-first
+                Source-available &middot; Self-hosted &middot; Privacy-first
               </div>
 
               <h1 className="mt-8 text-4xl font-bold tracking-tight leading-[1.08] sm:text-5xl lg:text-6xl">
@@ -59,7 +60,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl">
-                Ask questions about your documents. See exactly where every answer comes from. Nothing ever leaves your machine.
+                Ask about your documents. See verified sources. Watch a wiki of what you know grow — with knowledge stores that stay on your machine.
               </p>
 
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:justify-start">
@@ -126,28 +127,18 @@ export default function Home() {
       </section>
 
       {/* ══════════════ DEMO VIDEO ══════════════ */}
-      <section className="py-16 border-t border-border bg-muted/10">
+      <section id="demo" className="py-16 border-t border-border bg-muted/10">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center mb-8">
-            <div className="gold-line mx-auto w-16 mb-6" />
+          <div className="mb-8 text-center">
+            <div className="gold-line mx-auto mb-6 w-16" />
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">See it in action</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              90-second walkthrough: verified answers, subjects visualization, automatic memory, live sources, and TrustScore transparency.
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+              Live product chrome — claim verification &amp; refutation, snappy Constellation explore,
+              accumulating wiki, disclosed TrustScore, and local sources.
             </p>
           </div>
-
           <div className="mx-auto max-w-[960px]">
-            <div className="relative rounded-2xl overflow-hidden border border-border/40 shadow-2xl bg-black">
-              <video
-                src="/cerid-90s-demo.mp4"
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full h-auto"
-                poster="/hero-shield.jpg"
-              />
-            </div>
-            <p className="mt-3 text-center text-xs text-muted-foreground">No sign-up. No cloud. Everything stays on your machine.</p>
+            <DemoVideo defaultCut="90s" />
           </div>
         </div>
       </section>
@@ -165,7 +156,7 @@ export default function Home() {
               </h2>
               <p className="mt-3 text-muted-foreground leading-relaxed">
                 Explore Overview, Budget Sankey, and 3D net-worth trajectory with fictional household data.
-                Self-host for your real accounts — nothing leaves your machine.
+                Self-host for your real accounts — knowledge stores stay on your machine.
               </p>
             </div>
             <div className="mt-6 md:mt-0 shrink-0 flex flex-col items-stretch gap-3">
@@ -368,10 +359,10 @@ export default function Home() {
               </p>
               <ul className="mt-8 space-y-5">
                 {[
-                  { icon: Lock, text: "All data stored locally — nothing leaves your machine" },
+                  { icon: Lock, text: "Knowledge stores stay on your machine — self-hosted by design" },
                   { icon: ShieldCheck, text: "Encrypted at rest for sensitive knowledge bases" },
                   { icon: Cpu, text: "Free local AI option — no API costs required" },
-                  { icon: CheckCircle, text: "Open source — audit every line of code" },
+                  { icon: CheckCircle, text: "Source-available (FSL) — audit every line of code" },
                   { icon: Zap, text: "Smart model routing — always the right model for the task" },
                 ].map((item) => (
                   <li key={item.text} className="flex items-start gap-3">
@@ -412,8 +403,8 @@ export default function Home() {
               <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand mb-4">
                 <Github className="h-5 w-5" />
               </div>
-              <h3 className="text-base font-semibold">Open source</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Source-available under FSL-1.1-ALv2 — audit every line; each release converts to Apache-2.0 after two years.</p>
+              <h3 className="text-base font-semibold">Source-available</h3>
+              <p className="mt-2 text-sm text-muted-foreground">FSL-1.1-ALv2 — audit every line; each release converts to Apache-2.0 after two years.</p>
             </div>
           </div>
           <div className="mt-6 text-center">

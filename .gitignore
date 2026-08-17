@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Heavy social GIF (rebuild via demo-video pipeline; keep MP4 + poster in public/)
+public/cerid-30s-demo.gif
+# Optional PNG poster alias — JPEG is the canonical poster
+public/demo-poster.png

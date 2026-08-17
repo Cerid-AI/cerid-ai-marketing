@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Menu, X, Github } from "lucide-react"
 
 const NAV_LINKS = [
+  { href: "/#demo", label: "Demo" },
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
   { href: "/security", label: "Security" },

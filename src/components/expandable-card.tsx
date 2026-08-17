@@ -1,11 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, Layers, ShieldCheck, Bot, Brain, Lock, FolderOpen } from "lucide-react"
+import {
+  ChevronDown, Layers, ShieldCheck, Bot, Brain, Lock, FolderOpen,
+  Network, BookOpen, Activity, Rss, Eye,
+} from "lucide-react"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Layers, ShieldCheck, Bot, Brain, Lock, FolderOpen,
+  Network, BookOpen, Activity, Rss, Eye,
 }
 
 export function ExpandableCard({

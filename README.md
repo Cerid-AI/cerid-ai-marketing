@@ -66,6 +66,27 @@ The Stripe secret key never leaves Vercel; the self-hosted app never holds it.
 - **Error Monitoring:** Sentry (`@sentry/nextjs`)
 - **Hosting:** Vercel
 
+## Product demo assets
+
+Shipped under `public/` (assembled from the monorepo demo-video pipeline):
+
+| File | Use |
+|------|-----|
+| `cerid-90s-demo.mp4` | Homepage + Features primary tour |
+| `cerid-30s-demo.mp4` | Short sizzle (toggle on demo player) |
+| `cerid-30s-demo-square.mp4` | Social square cut |
+| `demo-poster.jpg` | Video poster + Open Graph image |
+
+Rebuild and re-ship from the public monorepo:
+
+```bash
+cd ../cerid-ai/docs/assets/demo-video/sizzle/mockups
+node record_v4.mjs && node record_map_snappy2.mjs && node record_wiki_trust.mjs
+python3 assemble_ux_v4.py   # writes public/ on this marketing repo
+```
+
+See `cerid-ai/docs/assets/demo-video/script/SIZZLE_NARRATIVE.md`.
+
 ## Repository
 
 This site was extracted from the `cerid-ai` monorepo (`packages/marketing/`) into its own repository at `Cerid-AI/cerid-ai-marketing`.

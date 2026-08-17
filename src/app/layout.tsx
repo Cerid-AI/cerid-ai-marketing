@@ -15,35 +15,36 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Cerid AI — Privacy-First AI Knowledge Companion",
+  title: "Cerid AI — Private AI Knowledge Companion",
   description:
-    "Self-hosted, privacy-first AI knowledge management. Unify code, finance, projects, and artifacts into a context-aware LLM interface with RAG-powered retrieval.",
+    "Self-hosted AI knowledge companion: claim verification, Constellation map, accumulating wiki, disclosed TrustScore. Free Core. Source-available FSL.",
   metadataBase: new URL("https://cerid.ai"),
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Cerid AI",
-    description: "Privacy-First AI Knowledge Companion",
+    title: "Cerid AI — Private AI Knowledge Companion",
+    description:
+      "Verified answers. Navigable knowledge map. Wiki that accumulates. Knowledge stores stay on your machine.",
     url: "https://cerid.ai",
     siteName: "Cerid AI",
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Cerid AI — Privacy-First AI Knowledge Companion",
+        url: "/demo-poster.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Cerid product demo — Constellation knowledge map",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cerid AI — Privacy-First AI Knowledge Companion",
+    title: "Cerid AI — Private AI Knowledge Companion",
     description:
-      "Self-hosted, privacy-first AI knowledge management. Unify code, finance, projects, and artifacts into a context-aware LLM interface with RAG-powered retrieval.",
-    images: ["/og-image.jpg"],
+      "Self-hosted AI with claim verification, Constellation map, wiki, and TrustScore. Free Core · FSL source-available.",
+    images: ["/demo-poster.jpg"],
   },
 }
 
@@ -56,7 +57,7 @@ const jsonLd = {
       url: "https://cerid.ai",
       logo: "https://cerid.ai/cerid-logo.svg",
       description:
-        "Self-hosted, privacy-first AI knowledge management.",
+        "Self-hosted, privacy-first AI knowledge companion with claim verification and a live knowledge map.",
     },
     {
       "@type": "SoftwareApplication",
@@ -69,7 +70,19 @@ const jsonLd = {
         priceCurrency: "USD",
       },
       description:
-        "Unify code, finance, projects, and artifacts into a context-aware LLM interface with RAG-powered retrieval.",
+        "Private AI knowledge companion: hybrid retrieval, per-claim verification, Constellation map, accumulating wiki, disclosed TrustScore. Free Core.",
+      url: "https://cerid.ai",
+      downloadUrl: "https://github.com/Cerid-AI/cerid-ai",
+    },
+    {
+      "@type": "VideoObject",
+      name: "Cerid AI product tour (90s)",
+      description:
+        "Live product sizzle: claim verification, Constellation explore, wiki, TrustScore, and local sources.",
+      thumbnailUrl: "https://cerid.ai/demo-poster.jpg",
+      contentUrl: "https://cerid.ai/cerid-90s-demo.mp4",
+      uploadDate: "2026-08-16",
+      duration: "PT1M30S",
     },
   ],
 }

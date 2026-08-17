@@ -9,7 +9,7 @@ import {
   Search, Bot, Database, ShieldCheck, Brain, FileText,
   Eye, Layers, Cpu, FolderOpen, Lock,
   Sparkles, Network, RefreshCw, Workflow, SlidersHorizontal, Globe,
-  Mic, Puzzle, Rss, Webhook, Mail, Bookmark,
+  Mic, Puzzle, Rss, Webhook, Mail, Bookmark, BookOpen, Activity,
 } from "lucide-react"
 
 /* ─────────────────────────────────────────
@@ -29,10 +29,34 @@ export const FEATURES: Feature[] = [
   {
     iconName: "ShieldCheck",
     title: "Know where answers come from",
-    summary: "Every answer includes inline citations so you can see exactly which document — and which passage — backs up each claim.",
-    detail: "Streaming claim verification with inline source attribution. 4-type claim detection (factual, recency, evasion, citation). Click any footnote to see source, confidence, and reasoning. Expert mode uses frontier models for re-verification.",
+    summary: "Every answer includes inline citations so you can see exactly which document — and which passage — backs up each claim. Wrong claims get refuted.",
+    detail: "Streaming claim verification with verified / partial / refuted outcomes and NLI contradiction gating. 4-type claim detection (factual, recency, evasion, citation). Click any footnote for source, confidence, and reasoning.",
     link: { href: "/features#verification", label: "See verification flow" },
     image: "/badge-verification.jpg",
+  },
+  {
+    iconName: "Network",
+    title: "Explore your knowledge as a map",
+    summary: "Constellation shows entities and clusters you can zoom, dart, and drill into — hubs, domains, and neighbors with legible labels.",
+    detail: "Live knowledge graph UI: Constellation (force layout + modes), Atlas communities, and Open-in-Atlas from any hub. Modes include tight clusters, domains-apart, and semantics. Captured end-to-end in the product sizzle.",
+    link: { href: "/features#knowledge", label: "See knowledge surfaces" },
+    image: "/badge-classrag.jpg",
+  },
+  {
+    iconName: "BookOpen",
+    title: "A wiki that accumulates",
+    summary: "Readable entity pages grow from your sources — not one-shot chat dumps. Browse by domain, open an article, return later.",
+    detail: "Wiki entities with summary, graph context, co-mentions, references, and verification status. Domain browse (Coding, Mail, Finance, …) plus search. Pages refresh as sources update.",
+    link: { href: "/features#knowledge", label: "See knowledge surfaces" },
+    image: "/badge-agents.jpg",
+  },
+  {
+    iconName: "Activity",
+    title: "Disclosed TrustScore",
+    summary: "A single score with open methodology — component tabs, targets, and what to do when a pillar drops.",
+    detail: "Straight mean of measured components (no learned weights). Components include DCG, memory recall, verification coverage, and preservation health. Methodology accordion in-product; source documentation linked.",
+    link: { href: "/features#knowledge", label: "See TrustScore" },
+    image: "/badge-zerotrust.jpg",
   },
   {
     iconName: "Layers",
@@ -51,25 +75,11 @@ export const FEATURES: Feature[] = [
     image: "/badge-byom.jpg",
   },
   {
-    iconName: "Brain",
-    title: "Gets smarter the more you use it",
-    summary: "Cerid remembers your preferences, past decisions, and key facts — so follow-up questions get better answers without repeating yourself.",
-    detail: "6-type memory salience scoring: empirical facts, decisions, preferences, project context, temporal events, conversational insights. Memory recall auto-injects alongside KB context.",
-    image: "/badge-agents.jpg",
-  },
-  {
     iconName: "Lock",
-    title: "Your data never leaves your device",
-    summary: "Everything runs on your machine. No cloud uploads, no telemetry by default. Only the query context you choose is sent to the AI model.",
+    title: "Your knowledge stores stay on your device",
+    summary: "Self-hosted by design. No cloud uploads of your corpus; telemetry off by default. Only the query context you choose is sent to your LLM — or nothing, if you run fully local.",
     detail: "Self-hosted Docker stack with ChromaDB, Neo4j, Redis — all on your machine. Optional Fernet encryption at rest. Source-available (FSL-1.1-ALv2).",
     image: "/badge-secure.jpg",
-  },
-  {
-    iconName: "FolderOpen",
-    title: "Works with files you already have",
-    summary: "Point at a folder and Cerid indexes everything — PDFs, Word docs, spreadsheets, code, emails, even zip archives. Over 30 file types supported.",
-    detail: "Bulk folder scan with estimation preview. Archive extraction (zip/tar). Automatic junk filtering. SSE progress streaming with pause/resume controls. 30+ file types supported.",
-    image: "/badge-architecture.jpg",
   },
   {
     iconName: "Rss",
@@ -144,6 +154,37 @@ export interface FeatureCategory {
 }
 
 export const CATEGORIES: FeatureCategory[] = [
+  {
+    id: "knowledge",
+    title: "Knowledge surfaces",
+    badge: "Core",
+    features: [
+      {
+        icon: Network,
+        title: "Constellation map",
+        casual: "Zoom, pan, and drill into clusters of entities with legible labels — hubs, domains, and neighbors you can open in Atlas.",
+        technical: "WebGL/canvas constellation with layout modes (default, tight clusters, domains-apart, semantics). Hub cards surface top entities; node click opens graph context and wiki. Captured live in the marketing sizzle (map-explore reel).",
+      },
+      {
+        icon: BookOpen,
+        title: "Accumulating wiki",
+        casual: "Entity pages that grow from your sources — browse by domain, open an article, read it later.",
+        technical: "Wiki entities with summary, activity & graph, co-mentions, references, backlinks, and verification badge. Domain browse + search. Background refresh keeps pages current as artifacts land.",
+      },
+      {
+        icon: Activity,
+        title: "Disclosed TrustScore",
+        casual: "One score, open methodology — component tabs, targets, and operator guidance when a pillar drops.",
+        technical: "Straight mean of normalized components (DCG, memory recall, verification coverage, preservation health). Modal from status bar; methodology accordion; no learned weights.",
+      },
+      {
+        icon: Layers,
+        title: "Atlas & communities",
+        casual: "Domain → community → entity hierarchy so structure means something, not just a blob of dots.",
+        technical: "GET /graph/decomposition drives Atlas icicle (domains → communities → entities). Neighborhood hops ≤2 available as a leaf mode. Open-in-Atlas from wiki and constellation hub cards.",
+      },
+    ],
+  },
   {
     id: "retrieval",
     title: "Retrieval & RAG",
